@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<title>
+ h e l l o !
+ </title>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>&nbsp;</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<input id="search" onkeypress="return search(event)" type="text" placeholder="">
+	<span id="linkContainer1" class="container">
+		<a href="https://docs.google.com/document/u/0/" class="link">docs</a>
+		<a href="https://mail.google.com/mail/u/0/#inbox" class="link">mail</a>
+		<a href="https://mega.nz/fm/F7A0BZDT" class="link">mega</a>
+		<a href="https://github.com/" class="link">github</a>
+	</span>
+	<span id="linkContainer2" class="container">
+		<a href="https://www.youtube.com/" class="link">ytb</a>
+		<a href="https://www.reddit.com/" class="link">rdt</a>
+		<a href="https://twitter.com/" class="link">twt</a>
+		<a href="https://www.4chan.org/" class="link">4ch</a>
+	</span>
+	<span id="linkContainer3" class="container">
+        <a href="https://allocation.miq.govt.nz/portal/login" class="link">miq</a>
+		<a href="https://www.skyscanner.ca/" class="link">skyscanner</a>
+		<a href="https://shinycolors.wiki/wiki/Main_Page" class="link">scwiki</a>
+	</span>
+	<span id="greetings"></span>
+	<img id="image" src="https://i.imgur.com/sJKuSZS.png" style="width:200px;">
+	
+	<!-- IGNORE BELOW -->	
+	<script>
+		document.addEventListener("keydown", event => {
+			if (![8, 9, 20, 32, 37, 38, 39, 40].includes(event.keyCode)) {
+				document.getElementById('search').focus();
+			}
+			if (event.keyCode == 27) {
+				document.getElementById('search').value = '';
+			}
+		});
+
+		function linkup(val) {
+			const sites = [
+				'thehiddenbay'
+				,'facebook'
+				,'twitter'
+				,'pinterest'
+				,'linkedin'
+				,'youtube'
+				,'github'
+				,'instagram'
+				,'reddit'
+				,'gmail'
+				,'outlook'
+				,'icloud'
+				,'couchsurfing'
+				,'airbnb'
+				,'indeed'
+				,'pdfdrive'
+				,'trademe.nz'
+				,'mega.nz'
+				,'invidio.us'
+				,'libgen.is'
+				,'waifu2x.udp.jp'
+			];
+			
+			let website,domain;
+			for (site of sites) {
+				if (site.indexOf(val) > -1) {website=site; break;}
+			}
+			
+			//	if website: goto website
+			//	else if board: goto board
+			//	else search on ddg
+			if (website) {
+				domain = website.indexOf(".") == -1 ? ".com" : "";
+				url = `http://${website+domain}`;
+				location.href = url;
+			} else if (val[0] == "/") {
+				console.log("testing chan");
+				location.href = `https://4chan.org${val}catalog`;
+			} else {
+				location.href = `https://duckduckgo.com/?q=${val}`;
+			}
+		}
+
+		function search(e) {
+			console.log("testing anything");
+			if (e.keyCode == 13) {
+				var val = document.getElementById("search").value;
+				if (val.trim().indexOf(".") > -1 && val.indexOf(" ") == -1) {
+					location.href = `https://${val.trim()}`;
+				} else {
+					linkup(val);
+				}
+				return 1;
+			}
+		}
+
+		document.getElementById("search").focus();
+		document.getElementById("search").addEventListener("keypress", (e) => search(e));
+		
+		var time = new Date()
+		,hours = time.getHours()
+		,minutes = time.getMinutes();
+		
+		if (hours > 4 && hours < 12) {
+			document.getElementById("greetings").innerHTML = `🐮 Good Morning, Iris! It is currently ${hours}:${minutes > 10 ? minutes : "0" + minutes}`;	
+		}	else if (hours > 12 && hours < 6) {
+			document.getElementById("greetings").innerHTML = `🦄 Good Afternoon, Iris! It is currently ${hours}:${minutes > 10 ? minutes : "0" + minutes}`;	
+		} else {
+			document.getElementById("greetings").innerHTML = `🦝 Good Evening, Iris! It is currently ${hours}:${minutes > 10 ? minutes : "0" + minutes}`;	
+		}
+	</script>
+</body>
+</html>

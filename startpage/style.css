@@ -1,0 +1,85 @@
+/*
+
+#search for the search bar
+
+#greetings for greetings
+
+#linkContainer for container of links
+	.link for links
+
+#image for main image
+
+*/
+body {
+	display:grid;
+	grid-template-columns:30% 30% 30%;
+	grid-template-rows:10% 10% 0% 5% 30%;
+	height:100vh;
+	top:0;
+	justify-content:center;
+	background:darkseagreen;
+	background-image:url(https://i.imgur.com/Vgi5WCD.jpg);
+	background-size:cover;
+	background-position:center;
+	background-repeat:no-repeat;
+	margin:0;
+	font-family:"DejaVu sans mono",monospace;
+}
+#greetings {
+	display:grid;
+	justify-items:center;
+	align-items:center;
+	grid-row-start:2;
+	grid-row-end:3;
+	grid-column-start: 1;
+  grid-column-end:4;
+	background-color:rgb(174, 206, 151,0.9);
+	border: 3px solid white;
+	padding:10px;
+	font-style:oblique;
+	font-size:26px;
+	font-weight:800;
+	color:white;
+	
+}
+
+#search {
+	display:grid;
+	justify-content:center;
+	grid-row-start:4;
+	grid-row-end:4;
+	grid-column-start:1;
+	grid-column-end:4;
+	background-color:rgb(256, 256, 256,0.8);
+	color:#5d8468;
+	border:3px solid #aece97;
+	margin:5px;
+}
+#image {
+	display:grid;
+	grid-column-start:1;
+	grid-column-end:2;
+	grid-row-start:10;
+	
+}
+.container{
+	display:grid;
+	justify-content:center;
+	align-content:center;
+	grid-template-rows:auto;
+	grid-row-start:5;
+	grid-row-end:6;
+	grid-gap:5%;
+	background-color:rgb(174, 206, 151,0.9);
+	margin:2%;
+	border: 3px solid white;
+	grid-template-rows:auto;
+	text-align:center;
+}
+.link {
+ display:grid;
+ color:white;
+ font-size:25px;
+ font-weight:800;
+ 
+}
