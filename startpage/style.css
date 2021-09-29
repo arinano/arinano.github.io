@@ -54,6 +54,7 @@ body {
 	color:#5d8468;
 	border:3px solid #aece97;
 	margin:5px;
+	text-align:center;
 }
 #image {
 	display:grid;
