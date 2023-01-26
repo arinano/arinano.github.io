@@ -1,0 +1,48 @@
+body {
+  font-family: cambria, monospace;
+  font-size:17px;
+  background-color: #3c3836;
+  display:grid;
+  grid-template-columns: auto auto 450px auto auto;
+  grid-template-rows: 200px 50px 370px 20% 20%;
+}
+
+#links {
+  margin: 50px;
+  grid-row: 2;
+  grid-column:3 /span 2;
+  margin-top:100px;
+  
+}
+
+.link {
+  color: #ffffff;
+}
+
+.link:hover {
+  color: #bd4c4a;
+}
+
+#search {
+  grid-column: 3;
+  grid-row:4;
+  margin:40px; 
+}
+
+#img {
+  grid-row-start: 3;
+  grid-row-end:5;
+  grid-column: 2;
+  margin:20px;
+  border: 4px double white;
+  align-self:center;
+  justify-self:right;
+}
+
+#base {
+  margin:
+}
+
+img {
+  margin:5px;
+}
