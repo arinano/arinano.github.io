@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<title>
+ w e l c o m e !
+ </title>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>&nbsp;</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="maincontainer">
+		<div id="links">
+			<span id="base" class="container">
+				<a href="https://mail.google.com/" class="link">mail</a>
+				<a href="https://www.icloud.com/" class="link">icloud</a>
+				<a href="https://mega.nz/" class="link">mega</a>
+				<a href="https://www.google.com/maps" class="link">maps</a>
+				<a href="https://docs.google.com/" class="link">docs</a>
+			</span>
+			<br><img src="divider.png"/><br>
+			<span id="social" class="container">
+				<a href="https://www.youtube.com/" class="link">youtube</a>
+				<a href="https://twitter.com/" class="link">twitter</a>
+				<a href="https://www.pixiv.net/en/" class="link">pixiv</a>
+				<a href="https://www.pinterest.nz/" class="link">pinterest</a>
+				<a href="https://www.reddit.com/" class="link">reddit</a>
+			</span>
+			<br><img src="divider.png"/><br>
+			<span id="chan" class="container">
+				<a href="https://www.4chan.org/" class="link">4chan</a>
+				<a href="https://boards.4channel.org/a/catalog" class="link">/a/</a>
+				<a href="https://boards.4channel.org/vg/catalog" class="link">/vg/</a>
+				<a href="https://boards.4chan.org/wg/catalog" class="link">/wg/</a>
+				<a href="https://boards.4channel.org/w/catalog" class="link">/w/</a>
+				<a href="https://boards.4channel.org/g/catalog" class="link">/g/</a>
+			</span>
+			<br><img src="divider.png"/><br>
+			<span id="work" class="container">
+				<a href="https://neocities.org/" class="link">neocities</a>
+				<a href="https://www.w3schools.com/" class="link">w3schools</a>
+				<a href="https://github.com/" class="link">github</a>
+				<a href="https://cegep-rimouski.omnivox.ca/" class="link">omnivox</a>
+				<a href="https://www.wolframalpha.com/" class="link">wolfram</a>
+				<a href="https://replit.com/" class="link">replit</a>
+			</span>
+			<br><img src="divider.png"/><br>
+			<span id="pirate" class="container">
+				<a href="https://nyaa.si/" class="link">nyaa</a>
+				<a href="https://hshop.erista.me/" class="link">hshop</a>
+				<a href="https://1337x.to/" class="link">1337x</a>
+				<a href="https://libgen.is/" class="link">libgen</a>
+				<a href="https://jpop80ss2.blogspot.com/" class="link">jpop80ss</a>
+			</span>
+			<br><img src="divider.png"/><br>
+			<span id="utilities" class="container">
+				<a href="https://www.photopea.com/" class="link">photopea</a>
+				<a href="https://app.diagrams.net/" class="link">draw.io</a>
+				<a href="https://catbox.moe/" class="link">catbox</a>
+				<a href="https://saucenao.com/" class="link">saucenao</a>
+				<a href="https://www.clipconverter.cc/2/" class="link">clipconverter</a>
+				<a href="http://waifu2x.udp.jp/" class="link">waifu2x</a>
+			</span>
+		</div>
+
+		<div id="searchgreet">
+			<input type="text" id="search" onkeypress="return search(event)" placeholder="search the world wide web" length="300px">
+			<p id="suggestions"></p>
+			<p id="greetings"></p>
+		</div>
+
+			<img src="verg.png" id="img" height="400px">
+
+
+	</div>
+	
+	<script>
+			const sites = [
+			"1337x.to"
+			,"facebook"
+			,"twitter"
+			,"pinterest"
+			,"yahoo"
+			,"linkedin"
+			,"youtube"
+			,"github"
+			,"instagram"
+			,"reddit"
+			,"dezgo"
+			,"gmail"
+			,"outlook"
+			,"photopea"
+			,"icloud"
+			,"airbnb"
+			,"indeed"
+			,"pdfdrive"
+			,"spotify"
+			,"askubuntu"
+			,"neodebrid"
+			,"kijiji.ca"
+			,"mega.nz"
+			,"yewtu.be"
+			,"libgen.is"
+			,"waifu2x.udp.jp"
+			,"exif.regex.info/exif.cgi"
+			,"pixelpeeper.io"
+			,"snapdrop.net"
+			,"sharedrop.io"
+			,"deepbrid.com/service"
+			,"stackoverflow"
+			,"chat.openai.com"
+			,"wolframalpha"
+	];
+
+	document.addEventListener("keydown", event => {
+		updateSuggestions(event.key, document.getElementById("search").value, sites);
+		if (![8, 9, 20, 32, 37, 38, 39, 40].includes(event.keyCode)) {
+			document.getElementById("search").focus();
+		}
+		if (event.keyCode == 27) {
+			document.getElementById("search").value = "";
+		}
+	});
+
+	function linkup(val, sites) {
+		let website,domain;
+		for (site of sites) {
+			if (site.indexOf(val) > -1) {website=site; break;}
+		}
+
+		//	if board: goto board
+		//	else if website: goto website
+		//	else search on ddg
+		if (val[0] == "/") {
+			console.log("testing chan");
+			window.open(`https://4chan.org${val}catalog`, "_self");
+		} else if (website) {
+			domain = website.indexOf(".") == -1 ? ".com" : "";
+			url = `http://${website+domain}`;
+			window.open(url, "_self");
+		} else {
+			window.open(`https://duckduckgo.com/?q=${val}`, "_self");
+		}
+	}
+
+	function updateSuggestions(key, term, sites) {
+		document.getElementById("suggestions").innerHTML = "";
+		for (site of sites) {
+			if (site.indexOf(term+key) > -1) {
+				document.getElementById("suggestions").innerHTML += `<a href="https://${(site.indexOf(".") > -1) ? site : site+".com"}" class="suggestion">${site}</a>`;
+			}
+		}
+	}
+
+	function search(e) {
+		if (e.keyCode == 13) {
+			var val = document.getElementById("search").value;
+			if (val.trim().indexOf(".") > -1 && val.indexOf(" ") == -1) {
+				window.open(`https://${val.trim()}`, "_self");
+			} else {
+				linkup(val, sites);
+			}
+			return 1;
+		}
+	}
+
+	document.getElementById("search").focus();
+	document.getElementById("search").addEventListener("keypress", (e) => search(e));
+
+	var datetime = new Date()
+	,day = {0:"Sunday", 1:"Monday", 2:"Tuesday", 3:"Wednesday", 4:"Thursday", 5:"Friday", 6:"Saturday"};
+	var time = `${datetime.getHours()}:${datetime.getMinutes() > 9 ? datetime.getMinutes() : "0"+datetime.getMinutes()}`
+	,date = `${day[datetime.getDay()]} ${datetime.getDate()}/${datetime.getMonth()+1}`
+	document.getElementById("greetings").innerHTML = `Hello Iris, it's currently ${time}, ${date}. Hope you're doing well!`;
+</script>
+
+</body>
+</html>
